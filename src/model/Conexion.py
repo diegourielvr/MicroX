@@ -24,3 +24,14 @@ class Conexion:
         if rows:
             return True
         return False
+        
+    def addUser(self, user, pw):
+        try:
+            # Insertar el nuevo usuario en la base de datos
+            sql = "INSERT INTO usuarios (nombre_usuario, contrasena) VALUES (%s, %s)"
+            values = (user, pw)
+            self.cursor.execute(sql, values)
+            self.connection.commit()
+            return True
+        except mysql.connector.Error as err:
+            return False
