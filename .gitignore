@@ -10,3 +10,5 @@ __pycache__/
 
 # IntelliJ project files
 .idea/
+
+ENV.py
