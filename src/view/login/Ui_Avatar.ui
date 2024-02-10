@@ -1,35 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Login</class>
- <widget class="QMainWindow" name="Login">
+ <class>Avatar</class>
+ <widget class="QMainWindow" name="Avatar">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
     <width>350</width>
-    <height>350</height>
+    <height>400</height>
    </rect>
-  </property>
-  <property name="minimumSize">
-   <size>
-    <width>350</width>
-    <height>350</height>
-   </size>
   </property>
   <property name="maximumSize">
    <size>
     <width>350</width>
-    <height>350</height>
+    <height>400</height>
    </size>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
-  <property name="styleSheet">
-   <string notr="true"/>
-  </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
+    <property name="spacing">
+     <number>0</number>
+    </property>
     <property name="leftMargin">
      <number>0</number>
     </property>
@@ -73,7 +67,7 @@
 color: rgb(0, 0, 0);</string>
             </property>
             <property name="text">
-             <string>Login</string>
+             <string>Escoge tu avatar</string>
             </property>
            </widget>
           </item>
@@ -81,68 +75,39 @@ color: rgb(0, 0, 0);</string>
         </widget>
        </item>
        <item>
-        <widget class="QFrame" name="frame_4">
+        <widget class="QFrame" name="frame_avatars_defecto">
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>70</height>
+          </size>
+         </property>
          <property name="frameShape">
           <enum>QFrame::StyledPanel</enum>
          </property>
          <property name="frameShadow">
           <enum>QFrame::Raised</enum>
          </property>
-         <layout class="QVBoxLayout" name="verticalLayout_3">
-          <item alignment="Qt::AlignBottom">
-           <widget class="QLabel" name="label_2">
-            <property name="styleSheet">
-             <string notr="true">font: 12pt &quot;Inter&quot;;
-color: rgb(0, 0, 0);</string>
-            </property>
-            <property name="text">
-             <string>Usuario</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="field_usuario">
-            <property name="styleSheet">
-             <string notr="true">font: 10pt &quot;Inter&quot;;</string>
-            </property>
-           </widget>
-          </item>
-          <item alignment="Qt::AlignBottom">
-           <widget class="QLabel" name="label_3">
-            <property name="styleSheet">
-             <string notr="true">font: 12pt &quot;Inter&quot;;
-color: rgb(0, 0, 0);</string>
-            </property>
-            <property name="text">
-             <string>Contraseña</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="field_contrasena">
-            <property name="styleSheet">
-             <string notr="true">font: 10pt &quot;Inter&quot;;</string>
-            </property>
-            <property name="echoMode">
-             <enum>QLineEdit::Password</enum>
-            </property>
-           </widget>
-          </item>
-          <item alignment="Qt::AlignLeft|Qt::AlignTop">
-           <widget class="QLabel" name="label_estado">
-            <property name="styleSheet">
-             <string notr="true">font: 9pt &quot;Inter&quot;;</string>
-            </property>
-            <property name="text">
-             <string>Estado</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
         </widget>
        </item>
        <item>
-        <widget class="QFrame" name="frame_3">
+        <widget class="QFrame" name="frame_avatar">
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QFrame" name="frame_4">
          <property name="maximumSize">
           <size>
            <width>16777215</width>
@@ -156,23 +121,33 @@ color: rgb(0, 0, 0);</string>
           <enum>QFrame::Raised</enum>
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout_2">
-          <item>
-           <widget class="QPushButton" name="btn_registrate">
+          <item alignment="Qt::AlignLeft">
+           <widget class="QPushButton" name="btn_subir_imagen">
             <property name="styleSheet">
              <string notr="true">font: 10pt &quot;Inter&quot;;</string>
             </property>
             <property name="text">
-             <string>Registrate</string>
+             <string>Subir imagen</string>
             </property>
            </widget>
           </item>
-          <item>
-           <widget class="QPushButton" name="btn_login">
+          <item alignment="Qt::AlignHCenter">
+           <widget class="QPushButton" name="btn_quitarimagen">
             <property name="styleSheet">
              <string notr="true">font: 10pt &quot;Inter&quot;;</string>
             </property>
             <property name="text">
-             <string>Login</string>
+             <string>Quitar imagen</string>
+            </property>
+           </widget>
+          </item>
+          <item alignment="Qt::AlignRight">
+           <widget class="QPushButton" name="btn_guardar">
+            <property name="styleSheet">
+             <string notr="true">font: 10pt &quot;Inter&quot;;</string>
+            </property>
+            <property name="text">
+             <string>Guardar</string>
             </property>
            </widget>
           </item>
