@@ -64,13 +64,12 @@ class RegistrarseController:
         file_dialog.setFileMode(QFileDialog.FileMode.ExistingFiles)
         if file_dialog.exec():
             file_path = file_dialog.selectedFiles()[0] # Seleccionar el primer archivo
-            print(QFileInfo(file_path).filePath())
             self.path_avatar = file_path
             self.agregarImagen(file_path)
 
 
-    def seleccionarImagen(self, relative_path_img):
-        self.path_avatar = relative_path_img
+    def seleccionarImagen(self, full_path):
+        self.path_avatar = full_path
         self.agregarImagen(self.path_avatar)
 
     def guardar(self):
@@ -80,15 +79,20 @@ class RegistrarseController:
             msg_box.setText("Debes seleccionar un avatar para terminar el registro")
             msg_box.exec()
             return
-        self.model.agregarUSuario(self.username, self.password, self.path_avatar)
+        # NOTE: transformar la imagen a binario
+        #avatar_data = None
+        with open(self.path_avatar, "rb") as file:
+            avatar_data = file.read()
+        self.model.agregarUsuario(self.username, self.password, avatar_data)
+        self.padre.mostrarLogin()
+        self.avatarView.destroy()
 
     def quitarImagen(self):
         self.path_avatar = None
         self.avatarView.limpiarImagen()
 
     def agregarImagen(self, path_avatar):
-        full_path = os.path.join(os.getcwd(), path_avatar)
-        pixmap = QPixmap(full_path)
+        pixmap = QPixmap(path_avatar)
         if not pixmap.isNull():
             pixmap = pixmap.scaled(128, 128, aspectRatioMode=Qt.AspectRatioMode.KeepAspectRatio)
             self.avatarView.cargarImagen(pixmap)

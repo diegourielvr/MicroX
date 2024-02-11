@@ -14,7 +14,6 @@ class LoginController:
 
         id_usuario = self.model.validUserAndPass(usuario, contrasena)
         if id_usuario:
-            print("existe en la base de datos")
             user = self.model.getUsuarioById(id_usuario)
             self.padre.setUsuario(user)
             self.padre.mostrarVPub()

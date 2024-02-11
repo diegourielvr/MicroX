@@ -40,16 +40,19 @@ class GUI_Avatar(QMainWindow, Ui_Avatar):
         self.controller.quitarImagen()
 
     def clickImg1(self):
-        relative_path = os.path.join(self.path_avatars_default, self.file_names[0])
-        self.controller.seleccionarImagen(relative_path)
+        cwd = os.getcwd()
+        path = os.path.join(cwd, self.path_avatars_default, self.file_names[0])
+        self.controller.seleccionarImagen(path)
 
     def clickImg2(self):
-        relative_path = os.path.join(self.path_avatars_default, self.file_names[1])
-        self.controller.seleccionarImagen(relative_path)
+        cwd = os.getcwd()
+        path = os.path.join(cwd, self.path_avatars_default, self.file_names[1])
+        self.controller.seleccionarImagen(path)
 
     def clickImg3(self):
-        relative_path = os.path.join(self.path_avatars_default, self.file_names[2])
-        self.controller.seleccionarImagen(relative_path)
+        cwd = os.getcwd()
+        path = os.path.join(cwd, self.path_avatars_default, self.file_names[2])
+        self.controller.seleccionarImagen(path)
 
     def cargarImagenes(self):
         cwd = os.getcwd()
@@ -74,4 +77,3 @@ class GUI_Avatar(QMainWindow, Ui_Avatar):
     def limpiarImagen(self):
         self.label_avatar.clear()
         self.btn_quitarimagen.setVisible(False)
-

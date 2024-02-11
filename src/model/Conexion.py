@@ -32,9 +32,9 @@ class Conexion:
         """
         values = (usuario, contrasena)
         self.cursor.execute(sql, values)
-        rows = self.cursor.fetchall()
+        rows = self.cursor.fetchall() # fetchall devuelve una lista de tuplas
         if rows:
-            return rows[0] # id_usuario
+            return rows[0][0] # id_usuario
         return None
 
     def existeUsuario(self, username):
@@ -52,30 +52,30 @@ class Conexion:
     def getUsuarioById(self, id_usuario):
         try:
             sql = """
-            SELECT id_usuario, username, ruta_avatar FROM usuarios
+            SELECT id_usuario, username, imagen FROM usuarios
             WHERE id_usuario = %s
             """
-            values = (id_usuario)
+            values = (id_usuario, )
             self.cursor.execute(sql, values)
-            rows = self.cursor.fetchall()
-            if rows:
-                usuario = Usuario(rows[0], rows[1], rows[2])
+            result = self.cursor.fetchone() # fetchone devuelve primera fila del resultado
+            if result:
+                usuario = Usuario(result[0], result[1], result[2])
                 return usuario
             return None
         except mysql.connector.Error as err:
             return None
 
-    def agregarUsuario(self, username, password, ruta_avatar):
+    def agregarUsuario(self, username, password, imagen):
+        """Imagen es de tiop binario
+        """
         try:
             sql = """
-            INSERT INTO usuarios (username, password, ruta_avatar)
+            INSERT INTO usuarios (username, password, imagen)
             VALUES (%s, %s, %s)
             """
-            values = (username,password, ruta_avatar)
+            values = (username, password, imagen)
             self.cursor.execute(sql, values)
             self.connection.commit()
-            if self.cursor.rowcount:
-                return True
-            return False
+            # self.cursor.rowcount:
         except mysql.connector.Error as err:
             return False

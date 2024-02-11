@@ -48,7 +48,6 @@ class MasterController:
         self.registrarseView.setController(self.registrarseController)
         self.registrarseController.mostrar()
 
-
     def mostrarVPub(self):
         if not self.vPubView:
             self.vPubView = GUI_VPub()
