@@ -1,16 +1,11 @@
 import sys
 from PyQt6.QtWidgets import QApplication
-
-from src.model.Conexion import Conexion
-from src.view.login.GUI_Login import GUI_Login
-from src.controller.login.LoginController import LoginController
+from src.controller.MasterController import MasterController
 
 def main():
     app = QApplication(sys.argv)
-    loginView = GUI_Login()
-    model = Conexion()
-    loginController = LoginController(loginView, model, None)
-    loginController.mostrar()
+    masterController = MasterController()
+    masterController.mostrarLogin()
     sys.exit(app.exec())
 
 if __name__ == '__main__':

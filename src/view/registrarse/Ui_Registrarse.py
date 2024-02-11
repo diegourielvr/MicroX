@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file '.\src\view\login\Ui_Registrarse.ui'
+# Form implementation generated from reading ui file '.\src\view\registrarse\Ui_Registrarse.ui'
 #
 # Created by: PyQt6 UI code generator 6.6.1
 #
@@ -86,6 +86,10 @@ class Ui_Registrarse(object):
         self.frame_4.setObjectName("frame_4")
         self.horizontalLayout = QtWidgets.QHBoxLayout(self.frame_4)
         self.horizontalLayout.setObjectName("horizontalLayout")
+        self.btn_regresar = QtWidgets.QPushButton(parent=self.frame_4)
+        self.btn_regresar.setStyleSheet("font: 10pt \"Inter\";")
+        self.btn_regresar.setObjectName("btn_regresar")
+        self.horizontalLayout.addWidget(self.btn_regresar, 0, QtCore.Qt.AlignmentFlag.AlignLeft)
         self.btn_continuar = QtWidgets.QPushButton(parent=self.frame_4)
         self.btn_continuar.setStyleSheet("font: 10pt \"Inter\";")
         self.btn_continuar.setObjectName("btn_continuar")
@@ -105,4 +109,5 @@ class Ui_Registrarse(object):
         self.label_4.setText(_translate("Registrarse", "Contraseña"))
         self.label_3.setText(_translate("Registrarse", "Confirmar contraseña"))
         self.label_estado.setText(_translate("Registrarse", "Estado"))
+        self.btn_regresar.setText(_translate("Registrarse", "Regresar"))
         self.btn_continuar.setText(_translate("Registrarse", "Continuar"))
