@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>400</width>
-    <height>400</height>
+    <height>200</height>
    </rect>
   </property>
   <property name="maximumSize">
@@ -19,7 +19,7 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout">
+  <layout class="QHBoxLayout" name="horizontalLayout_4">
    <property name="spacing">
     <number>0</number>
    </property>
@@ -175,22 +175,12 @@
           <number>0</number>
          </property>
          <item alignment="Qt::AlignLeft">
-          <widget class="QLabel" name="label_fecha">
+          <widget class="QLabel" name="label_fecha_modificacion">
            <property name="styleSheet">
             <string notr="true">font: 10pt &quot;Inter&quot;;</string>
            </property>
            <property name="text">
-            <string>Fecha</string>
-           </property>
-          </widget>
-         </item>
-         <item alignment="Qt::AlignRight">
-          <widget class="QLabel" name="label_hora">
-           <property name="styleSheet">
-            <string notr="true">font: 10pt &quot;Inter&quot;;</string>
-           </property>
-           <property name="text">
-            <string>Hora</string>
+            <string>Fecha_modificacion</string>
            </property>
           </widget>
          </item>
@@ -212,6 +202,21 @@
          <enum>QFrame::Raised</enum>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_3">
+         <property name="spacing">
+          <number>0</number>
+         </property>
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
          <item>
           <widget class="QTextEdit" name="textArea_contenido">
            <property name="maximumSize">
@@ -219,6 +224,9 @@
              <width>16777215</width>
              <height>100</height>
             </size>
+           </property>
+           <property name="readOnly">
+            <bool>true</bool>
            </property>
           </widget>
          </item>
@@ -233,6 +241,15 @@
         <property name="frameShadow">
          <enum>QFrame::Raised</enum>
         </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_3">
+         <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
+          <widget class="QLabel" name="label_imagen">
+           <property name="text">
+            <string> </string>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </widget>
       </item>
      </layout>

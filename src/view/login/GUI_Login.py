@@ -34,3 +34,4 @@ class GUI_Login(QMainWindow, Ui_Login):
     def limpiarCampos(self):
         self.field_usuario.clear()
         self.field_contrasena.clear()
+        self.label_estado.clear()

@@ -63,7 +63,8 @@
           <item alignment="Qt::AlignHCenter">
            <widget class="QLabel" name="label">
             <property name="styleSheet">
-             <string notr="true">font: 700 20pt &quot;Inter&quot;;</string>
+             <string notr="true">font: 700 20pt &quot;Inter&quot;;
+border-bottom: 1px solid black;</string>
             </property>
             <property name="text">
              <string>VMisPub</string>

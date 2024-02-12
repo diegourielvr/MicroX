@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>VNuevaPub</class>
- <widget class="QMainWindow" name="VNuevaPub">
+ <class>VPubEdit</class>
+ <widget class="QMainWindow" name="VPubEdit">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -66,7 +66,7 @@
              <string notr="true">font: 700 20pt &quot;Inter&quot;;</string>
             </property>
             <property name="text">
-             <string>VNuevaPub</string>
+             <string>VPubEdit</string>
             </property>
            </widget>
           </item>
@@ -179,6 +179,16 @@ border: none;
          </layout>
         </widget>
        </item>
+       <item alignment="Qt::AlignTop">
+        <widget class="QLabel" name="label_estado">
+         <property name="styleSheet">
+          <string notr="true">font: 10pt &quot;Inter&quot;;</string>
+         </property>
+         <property name="text">
+          <string>Estado</string>
+         </property>
+        </widget>
+       </item>
        <item>
         <widget class="QFrame" name="frame_5">
          <property name="frameShape">
@@ -196,6 +206,15 @@ border: none;
             <property name="frameShadow">
              <enum>QFrame::Raised</enum>
             </property>
+            <layout class="QHBoxLayout" name="horizontalLayout_5">
+             <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
+              <widget class="QLabel" name="label_imagen">
+               <property name="text">
+                <string> </string>
+               </property>
+              </widget>
+             </item>
+            </layout>
            </widget>
           </item>
           <item alignment="Qt::AlignRight">
@@ -242,7 +261,7 @@ border: none;
              <string notr="true">font: 10pt &quot;Inter&quot;;</string>
             </property>
             <property name="text">
-             <string>Listo</string>
+             <string>Guardar</string>
             </property>
            </widget>
           </item>

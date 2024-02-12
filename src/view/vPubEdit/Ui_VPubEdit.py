@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file '.\src\view\publicacion\Ui_VPubEdit.ui'
+# Form implementation generated from reading ui file '.\src\view\vPubEdit\Ui_VPubEdit.ui'
 #
 # Created by: PyQt6 UI code generator 6.6.1
 #
@@ -9,12 +9,12 @@
 from PyQt6 import QtCore, QtGui, QtWidgets
 
 
-class Ui_VNuevaPub(object):
-    def setupUi(self, VNuevaPub):
-        VNuevaPub.setObjectName("VNuevaPub")
-        VNuevaPub.resize(400, 500)
-        VNuevaPub.setMaximumSize(QtCore.QSize(400, 500))
-        self.centralwidget = QtWidgets.QWidget(parent=VNuevaPub)
+class Ui_VPubEdit(object):
+    def setupUi(self, VPubEdit):
+        VPubEdit.setObjectName("VPubEdit")
+        VPubEdit.resize(400, 500)
+        VPubEdit.setMaximumSize(QtCore.QSize(400, 500))
+        self.centralwidget = QtWidgets.QWidget(parent=VPubEdit)
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.centralwidget)
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
@@ -76,6 +76,10 @@ class Ui_VNuevaPub(object):
         self.textArea_contenido.setObjectName("textArea_contenido")
         self.horizontalLayout_3.addWidget(self.textArea_contenido)
         self.verticalLayout_2.addWidget(self.frame_3)
+        self.label_estado = QtWidgets.QLabel(parent=self.frame)
+        self.label_estado.setStyleSheet("font: 10pt \"Inter\";")
+        self.label_estado.setObjectName("label_estado")
+        self.verticalLayout_2.addWidget(self.label_estado, 0, QtCore.Qt.AlignmentFlag.AlignTop)
         self.frame_5 = QtWidgets.QFrame(parent=self.frame)
         self.frame_5.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
         self.frame_5.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
@@ -86,6 +90,11 @@ class Ui_VNuevaPub(object):
         self.frame_imagen.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
         self.frame_imagen.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
         self.frame_imagen.setObjectName("frame_imagen")
+        self.horizontalLayout_5 = QtWidgets.QHBoxLayout(self.frame_imagen)
+        self.horizontalLayout_5.setObjectName("horizontalLayout_5")
+        self.label_imagen = QtWidgets.QLabel(parent=self.frame_imagen)
+        self.label_imagen.setObjectName("label_imagen")
+        self.horizontalLayout_5.addWidget(self.label_imagen, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignVCenter)
         self.verticalLayout_3.addWidget(self.frame_imagen)
         self.btn_eliminar_imagen = QtWidgets.QPushButton(parent=self.frame_5)
         self.btn_eliminar_imagen.setStyleSheet("font: 10pt \"Inter\";")
@@ -109,18 +118,20 @@ class Ui_VNuevaPub(object):
         self.horizontalLayout_4.addWidget(self.btn_listo)
         self.verticalLayout_2.addWidget(self.frame_7)
         self.verticalLayout.addWidget(self.frame)
-        VNuevaPub.setCentralWidget(self.centralwidget)
+        VPubEdit.setCentralWidget(self.centralwidget)
 
-        self.retranslateUi(VNuevaPub)
-        QtCore.QMetaObject.connectSlotsByName(VNuevaPub)
+        self.retranslateUi(VPubEdit)
+        QtCore.QMetaObject.connectSlotsByName(VPubEdit)
 
-    def retranslateUi(self, VNuevaPub):
+    def retranslateUi(self, VPubEdit):
         _translate = QtCore.QCoreApplication.translate
-        VNuevaPub.setWindowTitle(_translate("VNuevaPub", "MainWindow"))
-        self.label.setText(_translate("VNuevaPub", "VPubEdit"))
-        self.field_titulo.setPlaceholderText(_translate("VNuevaPub", "Titulo"))
-        self.btn_subir_imagen.setText(_translate("VNuevaPub", "Subir imagen"))
-        self.textArea_contenido.setPlaceholderText(_translate("VNuevaPub", "Escribe algo..."))
-        self.btn_eliminar_imagen.setText(_translate("VNuevaPub", "Eliminar imagen"))
-        self.btn_cancelar.setText(_translate("VNuevaPub", "Cancelar"))
-        self.btn_listo.setText(_translate("VNuevaPub", "Guardar"))
+        VPubEdit.setWindowTitle(_translate("VPubEdit", "MainWindow"))
+        self.label.setText(_translate("VPubEdit", "VPubEdit"))
+        self.field_titulo.setPlaceholderText(_translate("VPubEdit", "Titulo"))
+        self.btn_subir_imagen.setText(_translate("VPubEdit", "Subir imagen"))
+        self.textArea_contenido.setPlaceholderText(_translate("VPubEdit", "Escribe algo..."))
+        self.label_estado.setText(_translate("VPubEdit", "Estado"))
+        self.label_imagen.setText(_translate("VPubEdit", " "))
+        self.btn_eliminar_imagen.setText(_translate("VPubEdit", "Eliminar imagen"))
+        self.btn_cancelar.setText(_translate("VPubEdit", "Cancelar"))
+        self.btn_listo.setText(_translate("VPubEdit", "Guardar"))

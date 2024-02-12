@@ -47,7 +47,7 @@ class RegistrarseController:
 
     def regresar(self):
         self.padre.mostrarLogin()
-        self.view.limpiarCampos()
+        self.view.limpiar()
         self.view.hide()
 
     def mostrarElegirAvatar(self):
@@ -85,7 +85,8 @@ class RegistrarseController:
             avatar_data = file.read()
         self.model.agregarUsuario(self.username, self.password, avatar_data)
         self.padre.mostrarLogin()
-        self.avatarView.destroy()
+        self.view.limpiar()
+        self.avatarView.hide()
 
     def quitarImagen(self):
         self.path_avatar = None

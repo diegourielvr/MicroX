@@ -20,7 +20,7 @@ class LoginController:
             self.view.hide()
             # ocultar o destruir ventana de login
         else:
-            print("No existe en la base de datos")
+            self.view.setEstado("No existe el usuario")
 
     def registrarse(self):
         """Mostrar ventana para registrar un nuevo usuario

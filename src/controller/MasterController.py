@@ -1,9 +1,9 @@
 from src.controller.login.LoginController import LoginController
-from src.controller.publicacion.VPubController import VPubController
+from src.controller.vPub.VPubController import VPubController
 from src.controller.registrarse.RegistrarseController import RegistrarseController
 from src.model.Conexion import Conexion
 from src.view.login.GUI_Login import GUI_Login
-from src.view.publicacion.GUI_VPub import GUI_VPub
+from src.view.vPub.GUI_VPub import GUI_VPub
 from src.view.registrarse.GUI_Registrarse import GUI_Registrarse
 
 
@@ -56,4 +56,5 @@ class MasterController:
                                                  self.dbModel,
                                                  self)
         self.vPubView.setController(self.vPubController)
+        self.vPubController.setUsuario(self.usuario)
         self.vPubController.mostrar()

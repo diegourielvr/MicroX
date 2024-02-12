@@ -11,7 +11,7 @@ class GUI_Registrarse(QMainWindow, Ui_Registrarse):
         self.init()
 
     def init(self):
-        self.limpiarCampos()
+        self.limpiar()
 
         self.btn_continuar.clicked.connect(self.clickContinuar)
         self.btn_regresar.clicked.connect(self.clickRegresar)
@@ -28,7 +28,7 @@ class GUI_Registrarse(QMainWindow, Ui_Registrarse):
         self.controller.regresar()
         pass
 
-    def limpiarCampos(self):
+    def limpiar(self):
         self.label_estado.clear()
         self.field_usuario.clear()
         self.field_contrasena.clear()

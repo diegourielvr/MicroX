@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file '.\src\view\publicacion\Ui_VMisPub.ui'
+# Form implementation generated from reading ui file '.\src\view\vPubEdit\Ui_VMisPub.ui'
 #
 # Created by: PyQt6 UI code generator 6.6.1
 #

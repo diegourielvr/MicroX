@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file '.\src\view\publicacion\Ui_VNuevaPub.ui'
+# Form implementation generated from reading ui file '.\src\view\vNuevaPub\Ui_VNuevaPub.ui'
 #
 # Created by: PyQt6 UI code generator 6.6.1
 #
@@ -12,7 +12,7 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 class Ui_VNuevaPub(object):
     def setupUi(self, VNuevaPub):
         VNuevaPub.setObjectName("VNuevaPub")
-        VNuevaPub.resize(400, 500)
+        VNuevaPub.resize(400, 332)
         VNuevaPub.setMaximumSize(QtCore.QSize(400, 500))
         self.centralwidget = QtWidgets.QWidget(parent=VNuevaPub)
         self.centralwidget.setObjectName("centralwidget")
@@ -76,6 +76,9 @@ class Ui_VNuevaPub(object):
         self.textArea_contenido.setObjectName("textArea_contenido")
         self.horizontalLayout_3.addWidget(self.textArea_contenido)
         self.verticalLayout_2.addWidget(self.frame_3)
+        self.label_estado = QtWidgets.QLabel(parent=self.frame)
+        self.label_estado.setObjectName("label_estado")
+        self.verticalLayout_2.addWidget(self.label_estado, 0, QtCore.Qt.AlignmentFlag.AlignLeft|QtCore.Qt.AlignmentFlag.AlignTop)
         self.frame_5 = QtWidgets.QFrame(parent=self.frame)
         self.frame_5.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
         self.frame_5.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
@@ -86,6 +89,11 @@ class Ui_VNuevaPub(object):
         self.frame_imagen.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
         self.frame_imagen.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
         self.frame_imagen.setObjectName("frame_imagen")
+        self.verticalLayout_4 = QtWidgets.QVBoxLayout(self.frame_imagen)
+        self.verticalLayout_4.setObjectName("verticalLayout_4")
+        self.label_imagen = QtWidgets.QLabel(parent=self.frame_imagen)
+        self.label_imagen.setObjectName("label_imagen")
+        self.verticalLayout_4.addWidget(self.label_imagen, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignVCenter)
         self.verticalLayout_3.addWidget(self.frame_imagen)
         self.btn_eliminar_imagen = QtWidgets.QPushButton(parent=self.frame_5)
         self.btn_eliminar_imagen.setStyleSheet("font: 10pt \"Inter\";")
@@ -121,6 +129,8 @@ class Ui_VNuevaPub(object):
         self.field_titulo.setPlaceholderText(_translate("VNuevaPub", "Titulo"))
         self.btn_subir_imagen.setText(_translate("VNuevaPub", "Subir imagen"))
         self.textArea_contenido.setPlaceholderText(_translate("VNuevaPub", "Escribe algo..."))
+        self.label_estado.setText(_translate("VNuevaPub", "Estado"))
+        self.label_imagen.setText(_translate("VNuevaPub", " "))
         self.btn_eliminar_imagen.setText(_translate("VNuevaPub", "Eliminar imagen"))
         self.btn_cancelar.setText(_translate("VNuevaPub", "Cancelar"))
         self.btn_listo.setText(_translate("VNuevaPub", "Listo"))
