@@ -54,8 +54,10 @@ class VPubController:
             self.vMisPubController = VMisPubController(self.vMisPubView,
                                                        self.model,
                                                        self)
+
+        self.vMisPubView.setController(self.vMisPubController)
         self.vMisPubController.mostrar()
-        #self.view.hide()
+        self.view.hide()
 
     def cargarCuas(self):
         cuas = self.model.getCuasResumen()

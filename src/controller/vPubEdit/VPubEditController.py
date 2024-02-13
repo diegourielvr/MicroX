@@ -50,7 +50,7 @@ class VPubEditController:
                                     titulo,
                                     contenido,
                                     img_data)
-        self.padre.mostrar()
+        self.padre.mostrarPadre()
         self.view.limpiar()
         self.view.hide()
 

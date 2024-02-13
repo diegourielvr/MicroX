@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file '.\src\view\vPubEdit\Ui_VMisPub.ui'
+# Form implementation generated from reading ui file '.\src\view\vMisPub\Ui_VMisPub.ui'
 #
 # Created by: PyQt6 UI code generator 6.6.1
 #
@@ -34,7 +34,8 @@ class Ui_VMisPub(object):
         self.horizontalLayout = QtWidgets.QHBoxLayout(self.frame_2)
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.label = QtWidgets.QLabel(parent=self.frame_2)
-        self.label.setStyleSheet("font: 700 20pt \"Inter\";")
+        self.label.setStyleSheet("font: 700 20pt \"Inter\";\n"
+"border-bottom: 1px solid black;")
         self.label.setObjectName("label")
         self.horizontalLayout.addWidget(self.label, 0, QtCore.Qt.AlignmentFlag.AlignHCenter)
         self.verticalLayout_2.addWidget(self.frame_2)
@@ -43,6 +44,10 @@ class Ui_VMisPub(object):
         self.frame_publicaciones.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
         self.frame_publicaciones.setObjectName("frame_publicaciones")
         self.verticalLayout_2.addWidget(self.frame_publicaciones)
+        self.btn_regresar = QtWidgets.QPushButton(parent=self.frame)
+        self.btn_regresar.setStyleSheet("font: 10pt \"Inter\";")
+        self.btn_regresar.setObjectName("btn_regresar")
+        self.verticalLayout_2.addWidget(self.btn_regresar, 0, QtCore.Qt.AlignmentFlag.AlignLeft)
         self.verticalLayout.addWidget(self.frame)
         VMisPub.setCentralWidget(self.centralwidget)
 
@@ -53,3 +58,4 @@ class Ui_VMisPub(object):
         _translate = QtCore.QCoreApplication.translate
         VMisPub.setWindowTitle(_translate("VMisPub", "MainWindow"))
         self.label.setText(_translate("VMisPub", "VMisPub"))
+        self.btn_regresar.setText(_translate("VMisPub", "Regresar"))

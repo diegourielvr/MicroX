@@ -167,3 +167,18 @@ class Conexion:
         except mysql.connector.Error as err:
             return None
 
+    def eliminarCuaById(self, id_cua):
+        try:
+            sql = """
+            DELETE FROM cuas
+            WHERE id_cua = %s
+            """
+            values = (id_cua, )
+            self.cursor.execute(sql, values)
+            self.connection.commit()
+            if self.cursor.rowcount:
+                return True
+        except mysql.connector.Error as err:
+            return None
+
+

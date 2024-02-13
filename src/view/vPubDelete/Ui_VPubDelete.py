@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file '.\src\view\vPubEdit\Ui_VPubDelete.ui'
+# Form implementation generated from reading ui file '.\src\view\vPubDelete\Ui_VPubDelete.ui'
 #
 # Created by: PyQt6 UI code generator 6.6.1
 #
@@ -9,13 +9,13 @@
 from PyQt6 import QtCore, QtGui, QtWidgets
 
 
-class Ui_MainWindow(object):
-    def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(300, 200)
-        MainWindow.setMinimumSize(QtCore.QSize(300, 200))
-        MainWindow.setMaximumSize(QtCore.QSize(300, 200))
-        self.centralwidget = QtWidgets.QWidget(parent=MainWindow)
+class Ui_VPubDelete(object):
+    def setupUi(self, VPubDelete):
+        VPubDelete.setObjectName("VPubDelete")
+        VPubDelete.resize(300, 200)
+        VPubDelete.setMinimumSize(QtCore.QSize(300, 200))
+        VPubDelete.setMaximumSize(QtCore.QSize(300, 200))
+        self.centralwidget = QtWidgets.QWidget(parent=VPubDelete)
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.centralwidget)
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
@@ -42,23 +42,23 @@ class Ui_MainWindow(object):
         self.horizontalLayout.setContentsMargins(10, 0, 10, 0)
         self.horizontalLayout.setSpacing(10)
         self.horizontalLayout.setObjectName("horizontalLayout")
-        self.pushButton_2 = QtWidgets.QPushButton(parent=self.frame_2)
-        self.pushButton_2.setStyleSheet("font: 10pt \"Inter\";")
-        self.pushButton_2.setObjectName("pushButton_2")
-        self.horizontalLayout.addWidget(self.pushButton_2)
-        self.pushButton = QtWidgets.QPushButton(parent=self.frame_2)
-        self.pushButton.setStyleSheet("font: 10pt \"Inter\";")
-        self.pushButton.setObjectName("pushButton")
-        self.horizontalLayout.addWidget(self.pushButton)
+        self.btn_cancelar = QtWidgets.QPushButton(parent=self.frame_2)
+        self.btn_cancelar.setStyleSheet("font: 10pt \"Inter\";")
+        self.btn_cancelar.setObjectName("btn_cancelar")
+        self.horizontalLayout.addWidget(self.btn_cancelar)
+        self.btn_eliminar = QtWidgets.QPushButton(parent=self.frame_2)
+        self.btn_eliminar.setStyleSheet("font: 10pt \"Inter\";")
+        self.btn_eliminar.setObjectName("btn_eliminar")
+        self.horizontalLayout.addWidget(self.btn_eliminar)
         self.verticalLayout.addWidget(self.frame_2)
-        MainWindow.setCentralWidget(self.centralwidget)
+        VPubDelete.setCentralWidget(self.centralwidget)
 
-        self.retranslateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        self.retranslateUi(VPubDelete)
+        QtCore.QMetaObject.connectSlotsByName(VPubDelete)
 
-    def retranslateUi(self, MainWindow):
+    def retranslateUi(self, VPubDelete):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.label.setText(_translate("MainWindow", "¿Deseas eliminar la publicación?"))
-        self.pushButton_2.setText(_translate("MainWindow", "Cancelar"))
-        self.pushButton.setText(_translate("MainWindow", "Eliminar"))
+        VPubDelete.setWindowTitle(_translate("VPubDelete", "MainWindow"))
+        self.label.setText(_translate("VPubDelete", "¿Deseas eliminar la publicación?"))
+        self.btn_cancelar.setText(_translate("VPubDelete", "Cancelar"))
+        self.btn_eliminar.setText(_translate("VPubDelete", "Eliminar"))

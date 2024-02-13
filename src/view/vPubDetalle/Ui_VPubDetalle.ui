@@ -149,7 +149,7 @@
              <item>
               <widget class="QLabel" name="label_autor">
                <property name="styleSheet">
-                <string notr="true">font: 700 10pt &quot;Inter&quot;;</string>
+                <string notr="true">font: 700 14pt &quot;Inter&quot;;</string>
                </property>
                <property name="text">
                 <string>Autor</string>
@@ -268,7 +268,7 @@
              </size>
             </property>
             <property name="text">
-             <string> </string>
+             <string/>
             </property>
            </widget>
           </item>

@@ -84,6 +84,16 @@ border-bottom: 1px solid black;</string>
          </property>
         </widget>
        </item>
+       <item alignment="Qt::AlignLeft">
+        <widget class="QPushButton" name="btn_regresar">
+         <property name="styleSheet">
+          <string notr="true">font: 10pt &quot;Inter&quot;;</string>
+         </property>
+         <property name="text">
+          <string>Regresar</string>
+         </property>
+        </widget>
+       </item>
       </layout>
      </widget>
     </item>

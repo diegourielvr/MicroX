@@ -8,6 +8,7 @@ class GUI_VMisPub(QMainWindow, Ui_VMisPub):
         super().__init__()
         self.setupUi(self)
 
+        self.controller = None
         self.layout = QVBoxLayout()
         self.scroll_area = QScrollArea()
         self.scroll_widget = QWidget()
@@ -15,12 +16,20 @@ class GUI_VMisPub(QMainWindow, Ui_VMisPub):
         self.init()
 
     def init(self):
+        self.btn_regresar.clicked.connect(self.clickRegresar)
+
         self.scroll_widget.setLayout(self.scroll_layout)
         self.scroll_area.setWidgetResizable(True)
         self.scroll_area.setWidget(self.scroll_widget)
 
         self.layout.addWidget(self.scroll_area)
         self.frame_publicaciones.setLayout(self.layout)
+
+    def setController(self, controller):
+        self.controller = controller
+
+    def clickRegresar(self):
+        self.controller.regresar()
 
     def cargarWidget(self, widget):
         self.scroll_layout.addWidget(widget)
