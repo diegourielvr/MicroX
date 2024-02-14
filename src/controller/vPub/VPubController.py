@@ -1,17 +1,18 @@
 from PyQt6.QtCore import Qt
 from PyQt6.QtGui import QPixmap
-from PyQt6.QtWidgets import QPushButton
 
 from src.controller.vMisPub.VMisPubController import VMisPubController
 from src.controller.vNuevaPub.VNuevaPubController import VNuevaPubController
+from src.patrones.Observer import Observer
 from src.view.vMisPub.GUI_VMisPub import GUI_VMisPub
 from src.view.vNuevaPub.GUI_VNuevaPub import GUI_VNuevaPub
 from src.view.vPubDetalle.GUI_VPubDetalle import GUI_VPubDetalle
 from src.view.vPubResumen.GUI_VPubResumen import GUI_VPubResumen
 
 
-class VPubController:
+class VPubController(Observer):
     def __init__(self, view, model, padre):
+        Observer.__init__(self)
         self.view = view
         self.model = model
         self.padre = padre
@@ -21,6 +22,11 @@ class VPubController:
         self.vMisPubView = None
         self.vMisPubController = None
         self.vPubDetalleView = None
+        self.cargarCuas()
+        self.model.suscribirseCuas(self)
+
+    def actualizar(self):
+        self.cargarCuas()
 
     def setUsuario(self, usuario):
         self.usuario = usuario
@@ -30,8 +36,8 @@ class VPubController:
 
     def mostrar(self):
         # cargar cuas a la vista
-        self.view.limpiarWidgets()
-        self.cargarCuas()
+        #self.view.limpiarWidgets()
+        #self.cargarCuas()
         self.view.show()
 
     def publicar(self):
@@ -54,19 +60,24 @@ class VPubController:
             self.vMisPubController = VMisPubController(self.vMisPubView,
                                                        self.model,
                                                        self)
-
         self.vMisPubView.setController(self.vMisPubController)
         self.vMisPubController.mostrar()
         self.view.hide()
 
     def cargarCuas(self):
-        cuas = self.model.getCuasResumen()
+        self.view.limpiarWidgets()
+        cuas = self.model.getCuas()
+        # Devuelve una lista de objetos de tipo cua
         for cua in cuas:
             # Pasar datos amostrar a string
-            id_cua = cua[0]
-            autor = self.model.getUsuarioById(cua[1]).getUsername()
-            titulo = cua[2]
-            contenido = cua[3][:20] # Mostrar solo los primeros 20 caracteres
+            id_cua = cua.getIdCua()
+
+            id_usuario = cua.getIdUsuario()
+            usuario = self.model.getUsuarioById(id_usuario)
+
+            autor = usuario.getUsername()
+            titulo = cua.getTitulo()
+            contenido = cua.getContenido()[:20] # Mostrar solo los primeros 20 caracteres
             cuaWidget = GUI_VPubResumen(id_cua, autor, titulo, contenido)
             cuaWidget.setController(self)
             cuaWidget.setStyleSheet("background-color: #f9f9f9;")

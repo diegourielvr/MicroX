@@ -3,182 +3,101 @@ import mysql.connector
 
 from src.model.Cua import Cua
 from src.model.Usuario import Usuario
+from src.model.dbModel.DBCuas import DBCuas
+from src.model.dbModel.DBLogs import DBLogs
+from src.model.dbModel.DBUsuarios import DBUsuarios
 
 
 class Conexion:
     def __init__(self):
-        # Conectar a la base de datos MySQL
-        self.connection = mysql.connector.connect(
-            host = HOST,
-            user = USER,
-            password = PASSWORD,
-            database= DATABASE
-        )
-        self.cursor = self.connection.cursor()
+        self.dbUsuarios = DBUsuarios()
+        self.dbCuas = DBCuas()
+        self.dbLogs = DBLogs()
 
     def validUserAndPass(self, usuario, contrasena):
-        """Verificar si el usuario es valido
-
-        :param usuario: str
-        :param contrasena: str
-        Returns:
-            None: No existe o son incorrectos los datos
-            id_usuario: str. El id del usuario
-        """
-
-        sql = """
-        SELECT id_usuario FROM usuarios
-        WHERE username = %s
-        AND password = %s
-        """
-        values = (usuario, contrasena)
-        self.cursor.execute(sql, values)
-        rows = self.cursor.fetchall() # fetchall devuelve una lista de tuplas
-        if rows:
-            return rows[0][0] # id_usuario
-        return None
+        res = self.dbUsuarios.validUserAndPass(usuario, contrasena)
+        if res:
+            self.dbLogs.agregarLog(usuario, "[LOGIN CORRECTO]", f"{usuario} con id: {res} se logeo")
+        else:
+            self.dbLogs.agregarLog(usuario, "[LOGIN INCORRECTO]", f"{usuario} intento hacer login")
+        return res
 
     def existeUsuario(self, username):
-        sql = """
-        SELECT id_usuario FROM usuarios
-        WHERE username = %s
-        """
-        values = (username, )
-        self.cursor.execute(sql, values)
-        rows = self.cursor.fetchall()
-        if rows:
-            return True
-        return False
+        res = self.dbUsuarios.existeUsuario(username)
+        if res:
+            self.dbLogs.agregarLog("SYSTEM", "[CONSULTA CORRECTA]", f"Existe el usuario {username}")
+        else:
+            self.dbLogs.agregarLog("SYSTEM", "[CONSULTA FALLIDA]", f"No existe el usuario {username}")
+        return res
 
     def getUsuarioById(self, id_usuario):
-        """DEvuelve un objeto de tipo Usuario"""
-        try:
-            sql = """
-            SELECT id_usuario, username, imagen FROM usuarios
-            WHERE id_usuario = %s
-            """
-            values = (id_usuario, )
-            self.cursor.execute(sql, values)
-            result = self.cursor.fetchone() # fetchone devuelve primera fila del resultado
-            if result:
-                usuario = Usuario(result[0], result[1], result[2])
-                return usuario
-            return None
-        except mysql.connector.Error as err:
-            return None
+        res = self.dbUsuarios.getUsuarioById(id_usuario)
+        if res:
+            self.dbLogs.agregarLog("SYSTEM", "[CONSULTA CORRECTA]", f"Se obtuvo el usuario con id: {id_usuario}")
+        else:
+            self.dbLogs.agregarLog("SYSTEM", "[CONSULTA FALLIDA]", f"No se encontro el usuario con id: {id_usuario}")
+        return res
 
     def agregarUsuario(self, username, password, imagen):
-        """Imagen es de tipo binario
-        """
-        try:
-            sql = """
-            INSERT INTO usuarios (username, password, imagen)
-            VALUES (%s, %s, %s)
-            """
-            values = (username, password, imagen)
-            self.cursor.execute(sql, values)
-            self.connection.commit()
-            if self.cursor.rowcount:
-                return True
-        except mysql.connector.Error as err:
-            return False
+        res = self.dbUsuarios.agregarUsuario(username, password, imagen)
+        if res:
+            self.dbLogs.agregarLog("SYSTEM", "[INSERTAR REGISTRO CORRECTO]", f"Se agrego el usuario {username} a la base de datos")
+        else:
+            self.dbLogs.agregarLog("SYSTEM", "[INSERTAR REGISTRO FALLIDO]", f"No pudo agregar el usuario {username} a la base de datos")
+        return res
 
     def agregarCua(self, id_usuario, titulo, contenido, imagen):
-        """Imagen es de tipo binario
-        """
-        try:
-            sql = """
-            INSERT INTO cuas (id_usuario, titulo, contenido, imagen)
-            VALUES (%s, %s, %s, %s)
-            """
-            values = (id_usuario, titulo, contenido, imagen)
-            self.cursor.execute(sql, values)
-            self.connection.commit()
-            if self.cursor.rowcount:
-                return True
-        except mysql.connector.Error as err:
-            return False
+        res = self.dbCuas.agregarCua(id_usuario, titulo, contenido, imagen)
+        if res:
+            self.dbLogs.agregarLog(f"{id_usuario}", "[AGREGAR CUA CORRECTAMENTE]", f"El usuario con id {id_usuario} ha agregado una publicacion")
+        else:
+            self.dbLogs.agregarLog(f"{id_usuario}", "[AGREGAR CUA FALLIDO]", f" El usuario con id {id_usuario} no pudo agregar una publicacion")
+        return res
 
-    def getCuasResumen(self):
-        """TODO:Devuelve una lista de objetos Cuas con todas las cuas almanecedas"""
-        try:
-            sql = """
-            SELECT id_cua, id_usuario, titulo, contenido
-            FROM cuas
-            ORDER BY fecha_modificacion DESC
-            """
-            self.cursor.execute(sql)
-            rows = self.cursor.fetchall()  # fetchall devuelve una lista de tuplas
-            if rows:
-                return rows
-            return None
-        except mysql.connector.Error as err:
-            return None
+    def getCuas(self):
+        res = self.dbCuas.getCuas()
+        if res:
+            self.dbLogs.agregarLog("SYSTEM", "[CONSULTA CUAS CORRECTA]", "Se obtuvo una lista de cuas")
+        else:
+            self.dbLogs.agregarLog("SYSTEM", "[CONSULTA CUAS FALLIDA]", "No se pudo obtener una lista de cuas")
+        return res
 
     def getCuasByIdUsuario(self, id_usuario):
-        """TODO:Devuelve una lista de Cuas que pertenecen al usuario con id id_usuario"""
-        try:
-            sql = """
-            SELECT id_cua, titulo, contenido, imagen, fecha_modificacion FROM cuas
-            WHERE id_usuario = %s
-            ORDER BY fecha_modificacion DESC
-            """
-            values = (id_usuario, )
-            self.cursor.execute(sql, values)
-            result = self.cursor.fetchall()
-            if result:
-                return result
-            return None
-        except mysql.connector.Error as err:
-            return None
+        res = self.dbCuas.getCuasByIdUsuario(id_usuario)
+        if res:
+            self.dbLogs.agregarLog("SYSTEM", "[CONSULTA CUAS CORRECTA]", f"So obtuvieron los cuas del usuario con id {id_usuario}")
+        else:
+            self.dbLogs.agregarLog("SYSTEM", "[CONSULTA CUAS FALLIDA]", f"No pudo obtener los cuas del usuario con id {id_usuario}")
+        return res
 
     def getCuaById(self, id_cua):
-        """Devuelve un objeto de tipo Cua
-        """
-        try:
-            sql = """
-            SELECT * FROM cuas
-            WHERE id_cua = %s
-            """
-            values = (id_cua, )
-            self.cursor.execute(sql, values)
-            res = self.cursor.fetchone()
-            if res:
-                cua = Cua(res[0], res[1], res[2], res[3], res[4], res[5])
-                return cua
-            return None
-        except mysql.connector.Error as err:
-            return None
+        res = self.dbCuas.getCuaById(id_cua)
+        if res:
+            self.dbLogs.agregarLog("SYSTEM", "[CONSULTA CUA CORRECTA]", f"Se obtuvo el cua con id {id_cua}")
+        else:
+            self.dbLogs.agregarLog("SYSTEM", "[CONSULTA CUA FALLIDA]", f"No se pudo obtener el cua con id {id_cua}")
+        return res
 
     def modificarCuaById(self, id_cua, titulo, contenido, imagen):
-        try:
-            sql = """
-            UPDATE cuas
-            SET titulo = %s,
-            contenido = %s,
-            imagen = %s
-            WHERE id_cua = %s
-            """
-            values = (titulo, contenido, imagen, id_cua)
-            self.cursor.execute(sql, values)
-            self.connection.commit()
-            if self.cursor.rowcount:
-                return True
-        except mysql.connector.Error as err:
-            return None
+        res = self.dbCuas.modificarCuaById(id_cua, titulo, contenido, imagen)
+        if res:
+            self.dbLogs.agregarLog("SYSTEM", "[MODIFICAR CUA CORRECTO]", f"Se ha modificado el cua con id {id_cua}")
+        else:
+            self.dbLogs.agregarLog("SYSTEM", "[MODIFICAR CUA FALLIDO]", f"No se ha podido modificar el cua con id {id_cua}")
+        return res
 
     def eliminarCuaById(self, id_cua):
-        try:
-            sql = """
-            DELETE FROM cuas
-            WHERE id_cua = %s
-            """
-            values = (id_cua, )
-            self.cursor.execute(sql, values)
-            self.connection.commit()
-            if self.cursor.rowcount:
-                return True
-        except mysql.connector.Error as err:
-            return None
+        res = self.dbCuas.eliminarCuaById(id_cua)
+        if res:
+            self.dbLogs.agregarLog("SYSTEM", "[ELIMINAR CUA CORRECTAMENTE]", f"Se ha eliminado el cua con id {id_cua}")
+        else:
+            self.dbLogs.agregarLog("SYSTEM", "[ELIMINAR CUA FALLIDO]", f"No se ha podido eliminar el cua con id {id_cua}")
+        return res
 
+    def suscribirseCuas(self, observer):
+        self.dbCuas.suscribirse(observer)
+        self.dbLogs.agregarLog("SYSTEM", "[SUSCRITO A CUAS CORRECTAMENTE]", f"Un objeto se ha suscrito a las actualizaciones de dbCuas")
 
+    def desuscribirseCuas(self, observer):
+        self.dbCuas.desuscribirse(observer)
+        self.dbLogs.agregarLog("SYSTEM", "[SUSCRIPCION ELIMINADA A CUAS CORRECTAMENTE]", f"Un objeto se ha desuscrito a las actualizaciones de dbCuas")

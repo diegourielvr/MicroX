@@ -6,13 +6,15 @@ from PyQt6.QtWidgets import QMessageBox
 
 from src.controller.vPubDelete.VPubDeleteController import VPubDeleteController
 from src.controller.vPubEdit.VPubEditController import VPubEditController
+from src.patrones.Observer import Observer
 from src.view.vMiPub.GUI_VMiPub import GUI_VMiPub
 from src.view.vPubDelete.GUI_VPubDelete import GUI_VPubDelete
 from src.view.vPubEdit.GUI_VPubEdit import GUI_VPubEdit
 
 
-class VMisPubController:
+class VMisPubController(Observer):
     def __init__(self, view, model, padre):
+        Observer.__init__(self)
         self.view = view
         self.model = model
         self.padre = padre
@@ -20,6 +22,11 @@ class VMisPubController:
         self.vPubEditController = None
         self.vPubDeleteView = None
         self.vPubDeleteController = None
+        self.cargarMisCuas()
+        self.model.suscribirseCuas(self)
+
+    def actualizar(self):
+        self.cargarMisCuas()
 
     def regresar(self):
         self.padre.mostrar()
@@ -50,6 +57,7 @@ class VMisPubController:
         self.view.hide()
 
     def cargarMisCuas(self):
+        self.view.limpiarWidgets()
         # Obtener cuas del model en orden descendent
         cuas = self.model.getCuasByIdUsuario(self.padre.getIdUsuario())
         if not cuas:
@@ -57,13 +65,13 @@ class VMisPubController:
 
         #Crear objetos de tipo miPub
         for cua in cuas:
-            id_cua = cua[0] # int
-            titulo = cua[1] # str
-            contenido = cua[2] # str
-            fecha_modificacion = cua[4].strftime("%Y-%m-%d %H:%M:%S") # str
+            id_cua = cua.getIdCua() # int
+            titulo = cua.getTitulo() # str
+            contenido = cua.getContenido() # str
+            fecha_modificacion = cua.getFechaModificacionToString()
             cuaWidget = GUI_VMiPub(id_cua, titulo, contenido, fecha_modificacion)
-            if cua[3] is not None:
-                imagen = self.blob_to_pixmap(cua[3], 128) # bytes
+            if cua.getImagen() is not None:
+                imagen = self.blob_to_pixmap(cua.getImagen(), 128) # bytes
                 cuaWidget.setImagen(imagen)
 
             cuaWidget.setController(self)
@@ -83,8 +91,8 @@ class VMisPubController:
             return None
 
     def mostrar(self):
-        self.view.limpiarWidgets()
-        self.cargarMisCuas()
+        #self.view.limpiarWidgets()
+        #self.cargarMisCuas()
         self.view.show()
 
     def mostrarPadre(self):
