@@ -13,7 +13,7 @@
 $ python -m virtualenv venv 
 ```
 
-2- Entra al entorno virtual:
+2. Entra al entorno virtual:
 
 ```
 $ .\venv\Scripts\activate

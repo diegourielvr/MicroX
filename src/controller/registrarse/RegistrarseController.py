@@ -34,7 +34,6 @@ class RegistrarseController:
             self.view.setEstado("Contraseña incorrecta")
             return
         # Validar si el usuari a registrar no existe
-        #if self.model.validUserAndPass(usuario, contrasena):
         if self.model.existeUsuario(usuario):
             self.view.setEstado("Usuario existente")
             self.view.setEstado("El usuario ya existe")

@@ -1,8 +1,3 @@
-from ENV import *
-import mysql.connector
-
-from src.model.Cua import Cua
-from src.model.Usuario import Usuario
 from src.model.dbModel.DBCuas import DBCuas
 from src.model.dbModel.DBLogs import DBLogs
 from src.model.dbModel.DBUsuarios import DBUsuarios

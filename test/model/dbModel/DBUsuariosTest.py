@@ -1,5 +1,6 @@
 import unittest
-#from src.model.Usuario import Usuario
+
+from src.model.Usuario import Usuario
 from src.model.dbModel.DBUsuarios import DBUsuarios
 
 class DBUsuariosTest(unittest.TestCase):
@@ -15,20 +16,20 @@ class DBUsuariosTest(unittest.TestCase):
         self.assertFalse(self.obj.validUserAndPass(' ', ' '))
         self.assertFalse(self.obj.validUserAndPass(None, None))
         self.assertIsNotNone(self.obj.validUserAndPass('usertest', '1234'))
-        #self.assertEqual(self.obj.validUserAndPass('diego', '0000'), 1)
+        self.assertEqual(self.obj.validUserAndPass('diego', '0000'), 1)
 
     def testExisteusuario(self):
         self.assertFalse(self.obj.existeUsuario(' '))
         self.assertFalse(self.obj.existeUsuario(None))
         self.assertFalse(self.obj.existeUsuario(1))
         self.assertFalse(self.obj.existeUsuario('usertest1'))
-        #self.assertTrue(self.obj.existeUsuario('diego'))
+        self.assertTrue(self.obj.existeUsuario('diego'))
 
     def testGetUsuarioById(self):
         self.assertFalse(self.obj.getUsuarioById(' '))
         self.assertFalse(self.obj.getUsuarioById(None))
         self.assertFalse(self.obj.getUsuarioById(-1))
-        #self.assertIsInstance(self.obj.getUsuarioById(1), Usuario)
+        self.assertIsInstance(self.obj.getUsuarioById(1), Usuario)
 
     def testAgregarUsuario(self):
         self.assertFalse(self.obj.agregarUsuario(' ', ' ', ' '))
